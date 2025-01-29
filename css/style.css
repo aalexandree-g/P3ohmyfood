@@ -30,6 +30,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0px 4px 4px rgb(190, 190, 190);
+  font-size: 1rem;
   padding: 1rem 2rem;
 }
 .header__location p {
@@ -46,18 +47,48 @@
   padding: 2.5rem 2rem 2rem;
 }
 .presentation__title {
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 .presentation__content {
+  font-size: 1.1rem;
   font-weight: 200;
 }
 .presentation__button {
+  font-size: 1rem;
   padding: 1rem 1.5rem;
   margin: 1rem 0rem;
+  border: 0px;
   border-radius: 2rem;
   background: linear-gradient(#FF79DA, #9356DC);
   color: white;
   text-decoration: none;
+}
+
+.fonctionnement {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1.5rem;
+}
+.fonctionnement__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.7rem 0rem 1rem 1rem;
+}
+.fonctionnement__content__button {
+  box-shadow: 0px 6px 6px #eaeaea;
+  display: flex;
+  background-color: #f6f6f6;
+  border: 0px;
+  border-radius: 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1.7rem;
+}
+
+.restaurants {
+  background-color: #f6f6f6;
 }
 
 /*# sourceMappingURL=style.css.map */

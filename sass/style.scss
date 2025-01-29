@@ -9,7 +9,9 @@ $secondary-background-color: #f6f6f6;
 $location-background-color: #eaeaea;
 $footer-background-color: #353535;
 $light-font-weight: 200;
-$bold-font-weight: 600;
+$bold-font-weight: 500;
+$dark-box-shadow: rgb(190, 190, 190);
+$light-box-shadow: #eaeaea;
 
 /***** MIXINS *****/
 @mixin flexMid {
@@ -23,8 +25,8 @@ $bold-font-weight: 600;
     flex-direction: column;
 }
 
-@mixin box-shadow($box-shadow-thickness) {
-    box-shadow: 0px $box-shadow-thickness $box-shadow-thickness rgb(190, 190, 190);
+@mixin box-shadow($thickness, $heaviness) {
+    box-shadow: 0px $thickness $thickness $heaviness;
 }
 
 /***** GENERAL *****/
@@ -41,7 +43,7 @@ $bold-font-weight: 600;
     background-color: $location-background-color;
     &__logo {
         @include flexMid();
-        @include box-shadow(2px);
+        @include box-shadow(2px, $dark-box-shadow);
         background-color: $primary-background-color;
         padding: 1.5rem 0rem 1rem;
         img {
@@ -50,7 +52,8 @@ $bold-font-weight: 600;
     }
     &__location {
         @include flexMid();
-        @include box-shadow(4px);
+        @include box-shadow(4px, $dark-box-shadow);
+        font-size: 1rem;
         padding: 1rem 2rem;
         p {
             padding-left: 1rem;
@@ -66,17 +69,45 @@ $bold-font-weight: 600;
     background-color: $secondary-background-color;
     padding: 2.5rem 2rem 2rem;
     &__title {
+        font-size: 1.5rem;
         font-weight: $bold-font-weight;
     }
     &__content {
+        font-size: 1.1rem;
         font-weight: $light-font-weight;
     }
     &__button {
+        font-size: 1rem;
         padding: 1rem 1.5rem;
         margin: 1rem 0rem;
+        border: 0px;
         border-radius: 2rem;
         background: linear-gradient($secondary-color, $primary-color);
         color: white;
         text-decoration: none;
     }
+}
+
+.fonctionnement {
+    @include flexColumn();
+    padding: 3rem 1.5rem;
+    &__content {
+        @include flexColumn();
+        gap: 1.5rem;
+        padding: 1.7rem 0rem 1rem 1rem;
+        &__button {
+            @include box-shadow(6px, $light-box-shadow);
+            display: flex;
+            background-color: $secondary-background-color;
+            border: 0px;
+            border-radius: 1.2rem;
+            font-size: 1rem;
+            font-weight: $bold-font-weight;
+            padding: 1.7rem;
+        }
+    }
+}
+
+.restaurants {
+    background-color: $secondary-background-color;
 }
