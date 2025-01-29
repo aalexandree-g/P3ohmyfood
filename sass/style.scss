@@ -1,16 +1,76 @@
+/***** VARIABLES *****/
+$primary-color: #9356DC;
+$secondary-color: #FF79DA;
+$tertiary-color: #99E2D0;
+$primary-font: 'Shrikhand', serif;
+$secondary-font: 'Roboto', serif;
+$primary-background-color: white;
+$secondary-background-color: #f6f6f6;
+$location-background-color: #eaeaea;
+$footer-background-color: #353535;
+
+/***** MIXINS *****/
+@mixin flexMid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/***** GENERAL *****/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', serif;
-    color: green;
+    font-family: $secondary-font;
 }
 
-header {
+/***** BODY *****/
+.header {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    background-color: $location-background-color;
+    &__logo {
+        @include flexMid();
+        background-color: $primary-background-color;
+        box-shadow: 0px 2px 2px rgb(190, 190, 190); 
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+        img {
+            height: 30px;
+        }
+    }
+    &__location {
+        @include flexMid();
+        box-shadow: 0px 4px 4px rgb(190, 190, 190);
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        p {
+            padding-left: 1rem;
+        }
+    }
+}
+
+.presentation {
+    display: flex;
     align-items: center;
-    .header__logo {
-        height: 30px;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: $secondary-background-color;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    &__title {
+        font-weight: 600;
+    }
+    &__content {
+        font-weight: 200;
+    }
+    &__button {
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 2rem;
+        background: linear-gradient($secondary-color, $primary-color);
+        color: white;
+        text-decoration: none;
+        font-weight: 400;
     }
 }
