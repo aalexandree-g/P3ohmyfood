@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /***** VARIABLES *****/
 /***** MIXINS *****/
 /***** GENERAL *****/
@@ -9,31 +10,38 @@
 }
 
 /***** BODY *****/
-.header {
+.main-container {
   display: flex;
   flex-direction: column;
-  background-color: #eaeaea;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 2px #cbcbcb;
+  padding: 1.3rem 0rem 0.7rem;
+  /* Pour rendre l'ombre portée visible */
+  position: relative;
+  z-index: 2;
+  background-color: white;
 }
 .header__logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 2px 2px rgb(190, 190, 190);
-  background-color: white;
-  padding: 1.5rem 0rem 1rem;
-}
-.header__logo img {
   height: 30px;
 }
-.header__location {
+
+.localisation {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 4px rgb(190, 190, 190);
-  font-size: 1rem;
+  box-shadow: 0px 4px 4px #cbcbcb;
   padding: 1rem 2rem;
+  /* Pour rendre l'ombre portée visible */
+  position: relative;
+  z-index: 1;
+  background-color: #eaeaea;
 }
-.header__location p {
+.localisation__text {
   padding-left: 1rem;
 }
 
@@ -42,53 +50,131 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding: 2.5rem 2rem 2rem;
   text-align: center;
   background-color: #f6f6f6;
-  padding: 2.5rem 2rem 2rem;
 }
 .presentation__title {
   font-size: 1.5rem;
   font-weight: 500;
 }
-.presentation__content {
+.presentation__subtitle {
   font-size: 1.1rem;
   font-weight: 200;
 }
 .presentation__button {
-  font-size: 1rem;
+  box-shadow: 0px 6px 6px #cbcbcb;
   padding: 1rem 1.5rem;
   margin: 1rem 0rem;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(#FF79DA, #9356DC);
   border: 0px;
   border-radius: 2rem;
-  background: linear-gradient(#FF79DA, #9356DC);
-  color: white;
-  text-decoration: none;
+}
+.presentation__button:hover {
+  filter: brightness(1.1);
 }
 
 .fonctionnement {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   padding: 3rem 1.5rem;
 }
-.fonctionnement__content {
+.fonctionnement__section {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding: 1.7rem 0rem 1rem 1rem;
+  padding: 0rem 0rem 1rem 0.3rem;
 }
-.fonctionnement__content__button {
+.fonctionnement__button {
   box-shadow: 0px 6px 6px #eaeaea;
   display: flex;
+  gap: 1.5rem;
+  padding: 1.7rem 2.3rem;
+  font-size: 1rem;
+  font-weight: 500;
   background-color: #f6f6f6;
   border: 0px;
   border-radius: 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 1.7rem;
+}
+.fonctionnement__button-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  left: 1.2rem;
+  font-size: 0.8rem;
+  color: white;
+  background-color: #9356DC;
+  border-radius: 50%;
+}
+.fonctionnement__button-icon {
+  font-size: 1.1rem;
+}
+.fonctionnement__button-icon--neutral {
+  color: #797979;
+}
+.fonctionnement__button-icon--purple {
+  color: #9356DC;
 }
 
 .restaurants {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 3rem 1.5rem;
   background-color: #f6f6f6;
+}
+.restaurants__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.restaurants__card__image-container {
+  position: relative;
+  height: 11rem;
+}
+.restaurants__card__image-container__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0rem 0rem;
+}
+.restaurants__card__image-container__nouveau {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgb(38.7404580153, 136.2595419847, 112.213740458);
+  background-color: #99E2D0;
+  border-radius: 0.2rem;
+}
+.restaurants__card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem;
+  padding-right: 1.5rem;
+  background-color: white;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+.restaurants__card__content__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.restaurants__card__content__text-subtitle {
+  font-size: 1.1rem;
+  font-weight: 200;
+}
+.restaurants__card__content__heart {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */
