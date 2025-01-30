@@ -73,7 +73,8 @@
   border-radius: 2rem;
 }
 .presentation__button:hover {
-  filter: brightness(1.1);
+  box-shadow: 0px 6px 6px #a8a8a8;
+  background: linear-gradient(rgb(255, 146.5, 225.0410447761), rgb(160.5, 107.125, 224.375));
 }
 
 .fonctionnement {
@@ -175,6 +176,11 @@
 }
 .restaurants__card__content__heart {
   font-size: 1.5rem;
+}
+.restaurants__card__content__heart--purple:hover {
+  background: linear-gradient(to bottom, #9356DC, #FF79DA);
+  background-clip: text;
+  color: transparent;
 }
 
 /*# sourceMappingURL=style.css.map */

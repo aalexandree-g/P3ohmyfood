@@ -11,6 +11,7 @@ $footer-background-color: #353535;
 $light-font-weight: 200;
 $bold-font-weight: 500;
 $dark-box-shadow: #cbcbcb;
+$darker-box-shadow: #a8a8a8;
 $light-box-shadow: #eaeaea;
 
 /***** MIXINS *****/
@@ -105,7 +106,8 @@ $light-box-shadow: #eaeaea;
         border-radius: 2rem;
     
         &:hover {
-            filter: brightness(1.1);
+            @include box-shadow(6px, $darker-box-shadow);
+            background: linear-gradient(lighten($secondary-color, 5%), lighten($primary-color, 5%));
         }
     }
 }
@@ -224,7 +226,17 @@ $light-box-shadow: #eaeaea;
                 }
             }
     
-            &__heart { font-size: 1.5rem; }
+            &__heart {
+                font-size: 1.5rem;
+
+                &--purple {
+                    &:hover {
+                        background: linear-gradient(to bottom, $primary-color, $secondary-color);
+                        background-clip: text;
+                        color: transparent;
+                    }
+                }
+            }
         }
 
     }
