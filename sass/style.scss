@@ -179,6 +179,11 @@ $light-box-shadow: #eaeaea;
 
     &__card {
 
+        &__link {
+            color: inherit;
+            text-decoration: none;
+        }
+
         &__image-container {
             position: relative;
             height: 11rem;
@@ -239,5 +244,38 @@ $light-box-shadow: #eaeaea;
             }
         }
 
+    }
+}
+
+.footer {
+    margin-top: 1rem;
+    padding: 0rem 0rem 1rem 1.5rem;
+
+    color: white;
+    background-color: $footer-background-color;
+
+    &__title {
+        padding: 1.1rem 0rem 1.1rem;
+
+        font-family: $primary-font;
+        font-size: 1.2rem;
+        font-weight: $light-font-weight;
+    }
+
+    &__content {
+ 
+        &__link {
+            padding-bottom: 0.5rem;
+
+            &-icon {
+                padding-right: 0.5rem;
+                font-size: 1rem;
+            }
+
+            &-text {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
     }
 }
