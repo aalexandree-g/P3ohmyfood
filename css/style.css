@@ -181,13 +181,16 @@
 .restaurants__card__content__heart {
   font-size: 1.5rem;
 }
-.restaurants__card__content__heart--purple:hover {
+.restaurants__card__content__heart:hover::before {
+  color: transparent;
+  font-weight: 900;
   background: linear-gradient(to bottom, #9356DC, #FF79DA);
   background-clip: text;
-  color: transparent;
 }
 
 .footer {
+  display: flex;
+  flex-direction: column;
   margin-top: 1rem;
   padding: 0rem 0rem 1rem 1.5rem;
   color: white;
@@ -199,16 +202,22 @@
   font-size: 1.2rem;
   font-weight: 200;
 }
-.footer__content__link {
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.footer__content__link-icon {
+.footer__content__icon {
   padding-right: 0.5rem;
   font-size: 1rem;
 }
-.footer__content__link-text {
+.footer__content__link {
   color: inherit;
   text-decoration: none;
+}
+.footer__content__link--bold {
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=style.css.map */
