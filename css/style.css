@@ -19,12 +19,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 2px 2px #cbcbcb;
   padding: 1.3rem 0rem 0.7rem;
   /* Pour rendre l'ombre portée visible */
   position: relative;
   z-index: 2;
   background-color: white;
+  box-shadow: 0px 2px 2px #cbcbcb;
 }
 .header__logo {
   height: 30px;
@@ -34,15 +34,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 4px #cbcbcb;
   padding: 1rem 2rem;
   /* Pour rendre l'ombre portée visible */
   position: relative;
   z-index: 1;
   background-color: #eaeaea;
+  box-shadow: 0px 4px 4px #cbcbcb;
 }
 .localisation__text {
   padding-left: 1rem;
+}
+
+.btn {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0rem;
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(#FF79DA, #9356DC);
+  box-shadow: 0px 5px 15px #b4b4b4;
+  border: 0px;
+  border-radius: 2rem;
+  /***** ANIMATION DU BOUTON *****/
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(rgb(255, 141.4, 223.6328358209), rgb(157.8, 102.9, 223.5));
+  box-shadow: 0px 5px 15px #cbcbcb;
+  border: 0px;
+  border-radius: 2rem;
+  opacity: 0;
+  transition: opacity 250ms;
+}
+.btn:hover::before {
+  opacity: 1;
 }
 
 .presentation {
@@ -61,20 +93,6 @@
 .presentation__subtitle {
   font-size: 1.1rem;
   font-weight: 200;
-}
-.presentation__button {
-  box-shadow: 0px 6px 6px #cbcbcb;
-  padding: 1rem 1.5rem;
-  margin: 1rem 0rem;
-  font-size: 1rem;
-  color: white;
-  background: linear-gradient(#FF79DA, #9356DC);
-  border: 0px;
-  border-radius: 2rem;
-}
-.presentation__button:hover {
-  box-shadow: 0px 6px 6px #a8a8a8;
-  background: linear-gradient(rgb(255, 146.5, 225.0410447761), rgb(160.5, 107.125, 224.375));
 }
 
 .fonctionnement {
@@ -180,14 +198,50 @@
 }
 .restaurants__card__content__heart {
   font-size: 1.5rem;
+  position: relative;
 }
-.restaurants__card__content__heart:hover::before {
-  color: transparent;
+.restaurants__card__content__heart::after {
+  content: "\f004";
+  font-family: "Font Awesome 6 Free";
   font-weight: 900;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: linear-gradient(to bottom, #9356DC, #FF79DA);
   background-clip: text;
+  color: transparent;
+  transform: scale(0);
+}
+.restaurants__card__content__heart:hover::after {
+  animation: heart-in 250ms forwards;
+}
+.restaurants__card__content__heart:not(:hover)::after {
+  animation: heart-out 300ms ease-in;
 }
 
+@keyframes heart-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes heart-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
 .footer {
   display: flex;
   flex-direction: column;

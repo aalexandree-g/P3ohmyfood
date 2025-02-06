@@ -11,7 +11,7 @@ $footer-background-color: #353535;
 $light-font-weight: 200;
 $bold-font-weight: 500;
 $dark-box-shadow: #cbcbcb;
-$darker-box-shadow: #a8a8a8;
+$darker-box-shadow: #b4b4b4;
 $light-box-shadow: #eaeaea;
 
 /***** MIXINS *****/
@@ -24,10 +24,6 @@ $light-box-shadow: #eaeaea;
 @mixin flexColumn {
     display: flex;
     flex-direction: column;
-}
-
-@mixin box-shadow($thickness, $heaviness) {
-    box-shadow: 0px $thickness $thickness $heaviness;
 }
 
 /***** GENERAL *****/
@@ -45,7 +41,6 @@ $light-box-shadow: #eaeaea;
 
 .header {
     @include flexMid();
-    @include box-shadow(2px, $dark-box-shadow);
 
     padding: 1.3rem 0rem 0.7rem;
     /* Pour rendre l'ombre portée visible */
@@ -53,13 +48,13 @@ $light-box-shadow: #eaeaea;
     z-index: 2;
 
     background-color: $primary-background-color;
+    box-shadow: 0px 2px 2px $dark-box-shadow;
 
     &__logo { height: 30px; }
 }
 
 .localisation {
     @include flexMid();
-    @include box-shadow(4px, $dark-box-shadow);
     
     padding: 1rem 2rem;
     /* Pour rendre l'ombre portée visible */
@@ -67,8 +62,48 @@ $light-box-shadow: #eaeaea;
     z-index: 1;
 
     background-color: $location-background-color;
+    box-shadow: 0px 4px 4px $dark-box-shadow;
 
     &__text { padding-left: 1rem; }
+}
+
+.btn {
+    padding: 1rem 1.5rem;
+    margin: 1rem 0rem;
+    position: relative;
+    z-index: 1;
+
+    font-size: 1rem;
+    color: white;
+
+    background: linear-gradient($secondary-color, $primary-color);
+    box-shadow: 0px 5px 15px $darker-box-shadow;
+    border: 0px;
+    border-radius: 2rem;
+
+    /***** ANIMATION DU BOUTON *****/
+    &::before {
+        content: "";
+        position: absolute;     // on positionne ce "calque"
+        z-index: -1;            // précisément au même endroit
+        top: 0;                 // en-dessous (::before) du bouton d'origine
+        bottom: 0;              // pour ne pas masquer le texte
+        left: 0;
+        right: 0;
+
+        background: linear-gradient(lighten($secondary-color, 4), lighten($primary-color,4));
+        box-shadow: 0px 5px 15px $dark-box-shadow;
+        border: 0px;
+        border-radius: 2rem;
+
+        opacity: 0;
+        transition: opacity 250ms;
+    }
+    &:hover {
+        &::before {             // on favorise opacity à un simple background-color
+            opacity: 1;         // pour des questions de performances
+        }
+    }
 }
 
 .presentation {
@@ -91,25 +126,6 @@ $light-box-shadow: #eaeaea;
         font-size: 1.1rem;
         font-weight: $light-font-weight;
     }
-
-    &__button {
-        @include box-shadow(6px, $dark-box-shadow);
-
-        padding: 1rem 1.5rem;
-        margin: 1rem 0rem;
-
-        font-size: 1rem;
-        color: white;
-
-        background: linear-gradient($secondary-color, $primary-color);
-        border: 0px;
-        border-radius: 2rem;
-    
-        &:hover {
-            @include box-shadow(6px, $darker-box-shadow);
-            background: linear-gradient(lighten($secondary-color, 5%), lighten($primary-color, 5%));
-        }
-    }
 }
 
 .fonctionnement {
@@ -126,7 +142,7 @@ $light-box-shadow: #eaeaea;
     }
 
     &__button {
-        @include box-shadow(6px, $light-box-shadow);
+        box-shadow: 0px 6px 6px $light-box-shadow;
 
         display: flex;
         gap: 1.5rem;
@@ -231,17 +247,58 @@ $light-box-shadow: #eaeaea;
                 }
             }
     
-            &__heart { font-size: 1.5rem; }
+            &__heart {
+                font-size: 1.5rem;
+                position: relative;
 
-            &__heart:hover::before {
-                color: transparent;
-                font-weight: 900;
+                &::after {
+                    content: "\f004";                       
+                    font-family: "Font Awesome 6 Free";     // on positionne la version remplie du coeur
+                    font-weight: 900;                       // par-dessus (::after) la version regular
+                    position: absolute;                     // précisément au même endroit
+                    top: 0;                 
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
 
-                background: linear-gradient(to bottom, $primary-color, $secondary-color);
-                background-clip: text;
+                    background: linear-gradient(to bottom, $primary-color, $secondary-color);
+                    background-clip: text;                
+                    color: transparent;                     // on applique le dégradé sur le coeur
+                    
+                    transform: scale(0);                    // on cache ce coeur avant le déclenchement
+                }
+
+                &:hover::after {    
+                    animation: heart-in 250ms forwards;     // déclenchement lors du survol
+                }
+                &:not(:hover)::after {             
+                    animation: heart-out 300ms ease-in      // déclenchement quand on quitte le survol
+                }
             }
         }
+    }
+}
 
+@keyframes heart-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+        animation-timing-function: ease-in;
+    }
+    100% {
+        transform: scale(1);
+        animation-timing-function: ease-out;
+    }
+}
+
+@keyframes heart-out {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
     }
 }
 
@@ -266,18 +323,18 @@ $light-box-shadow: #eaeaea;
         gap: 0.5rem;
         padding-bottom: 0.5rem;
 
-            &__icon {
-                padding-right: 0.5rem;
-                font-size: 1rem;
-            }
+        &__icon {
+            padding-right: 0.5rem;
+            font-size: 1rem;
+        }
 
-            &__link {
-                color: inherit;
-                text-decoration: none;
+        &__link {
+            color: inherit;
+            text-decoration: none;
 
-                &--bold {
-                    font-weight: $bold-font-weight;
-                }
+            &--bold {
+                font-weight: $bold-font-weight;
             }
+        }
     }
 }
