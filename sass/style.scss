@@ -90,7 +90,7 @@ $light-box-shadow: #eaeaea;
         bottom: 0;              // pour ne pas masquer le texte
         left: 0;
         right: 0;
-
+        
         background: linear-gradient(lighten($secondary-color, 4), lighten($primary-color,4));
         box-shadow: 0px 5px 15px $dark-box-shadow;
         border: 0px;
@@ -246,7 +246,7 @@ $light-box-shadow: #eaeaea;
                     font-weight: $light-font-weight;
                 }
             }
-    
+
             &__heart {
                 font-size: 1.5rem;
                 position: relative;
@@ -267,13 +267,18 @@ $light-box-shadow: #eaeaea;
                     
                     transform: scale(0);                    // on cache ce coeur avant le déclenchement
                 }
+            }
 
-                &:hover::after {    
-                    animation: heart-in 250ms forwards;     // déclenchement lors du survol
-                }
-                &:not(:hover)::after {             
-                    animation: heart-out 300ms ease-in      // déclenchement quand on quitte le survol
-                }
+            .heart-checkbox input {
+                display: none;
+            }
+
+            .heart-checkbox input:checked + &__heart::after {
+                animation: heart-in 250ms forwards;
+            }
+
+            .heart-checkbox input:not(:checked) + &__heart::after {
+                animation: heart-out 250ms ease-in;
             }
         }
     }

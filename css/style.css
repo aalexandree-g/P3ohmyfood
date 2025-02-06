@@ -214,11 +214,14 @@
   color: transparent;
   transform: scale(0);
 }
-.restaurants__card__content__heart:hover::after {
+.restaurants__card__content .heart-checkbox input {
+  display: none;
+}
+.heart-checkbox input:checked + .restaurants__card__content__heart::after {
   animation: heart-in 250ms forwards;
 }
-.restaurants__card__content__heart:not(:hover)::after {
-  animation: heart-out 300ms ease-in;
+.heart-checkbox input:not(:checked) + .restaurants__card__content__heart::after {
+  animation: heart-out 250ms ease-in;
 }
 
 @keyframes heart-in {
