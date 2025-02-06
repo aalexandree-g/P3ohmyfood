@@ -30,22 +30,21 @@ $light-box-shadow: #eaeaea;
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: $secondary-font;
+    box-sizing: border-box;
 }
 
 /***** BODY *****/
 .main-container {
-    @include flexColumn();
+    min-width: 320px;
 }
 
 .header {
     @include flexMid();
 
     padding: 1.3rem 0rem 0.7rem;
-    /* Pour rendre l'ombre portée visible */
     position: relative;
-    z-index: 2;
+    z-index: 2;     // pour rendre l'ombre portée visible
 
     background-color: $primary-background-color;
     box-shadow: 0px 2px 2px $dark-box-shadow;
@@ -55,11 +54,10 @@ $light-box-shadow: #eaeaea;
 
 .localisation {
     @include flexMid();
-    
+    width: 100%;
     padding: 1rem 2rem;
-    /* Pour rendre l'ombre portée visible */
     position: relative;
-    z-index: 1;
+    z-index: 1;     // pour rendre l'ombre portée visible
 
     background-color: $location-background-color;
     box-shadow: 0px 4px 4px $dark-box-shadow;
@@ -130,7 +128,6 @@ $light-box-shadow: #eaeaea;
 
 .fonctionnement {
     @include flexColumn();
-
     gap: 1.5rem;
     padding: 3rem 1.5rem;
 
@@ -139,11 +136,17 @@ $light-box-shadow: #eaeaea;
 
         gap: 1.5rem;
         padding: 0rem 0rem 1rem 0.3rem;
+
+        // Responsive design pour tablettes et ordinateurs
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
     }
 
     &__button {
-        box-shadow: 0px 6px 6px $light-box-shadow;
-
+        position: relative;
         display: flex;
         gap: 1.5rem;
         padding: 1.7rem 2.3rem;
@@ -154,14 +157,15 @@ $light-box-shadow: #eaeaea;
         background-color: $secondary-background-color;
         border: 0px;
         border-radius: 1.2rem;
+        box-shadow: 0px 6px 6px $light-box-shadow;
         
         &-number {
             @include flexMid();
-
+            position: absolute;
+            top: 1.5rem;
+            left: -0.7rem;
             width: 1.5rem;
             height: 1.5rem;
-            position: absolute;
-            left: 1.2rem;
 
             font-size: 0.8rem;
             color: white;
@@ -184,13 +188,21 @@ $light-box-shadow: #eaeaea;
     @include flexColumn();
 
     gap: 1.5rem;
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem 4rem;
+    width: 100%;
 
     background-color: $secondary-background-color;
 
     &__section {
         @include flexColumn();
         gap: 1.2rem;
+
+        // Responsive design pour tablettes et ordinateurs
+        @media (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem 5rem;
+    }
     }
 
     &__card {
@@ -309,15 +321,13 @@ $light-box-shadow: #eaeaea;
 
 .footer {
     @include flexColumn();
-    margin-top: 1rem;
-    padding: 0rem 0rem 1rem 1.5rem;
+    gap: 1.1rem;
+    padding: 1.5rem 0rem 1.5rem 1.5rem;
 
     color: white;
     background-color: $footer-background-color;
 
     &__title {
-        padding: 1.1rem 0rem 1.1rem;
-
         font-family: $primary-font;
         font-size: 1.2rem;
         font-weight: $light-font-weight;
@@ -326,7 +336,6 @@ $light-box-shadow: #eaeaea;
     &__content {
         @include flexColumn();
         gap: 0.5rem;
-        padding-bottom: 0.5rem;
 
         &__icon {
             padding-right: 0.5rem;
@@ -341,5 +350,17 @@ $light-box-shadow: #eaeaea;
                 font-weight: $bold-font-weight;
             }
         }
+
+        @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 8rem 1fr;
+            gap: 0.7rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row-reverse;
+        gap: 0rem;
+        padding: 4rem 4rem 2rem 0;
     }
 }
