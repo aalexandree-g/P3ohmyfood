@@ -9,14 +9,24 @@
 }
 
 /***** BODY *****/
-.main-container {
+body {
   min-width: 320px;
+}
+
+.limit-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 3rem 1.5rem;
+  max-width: 1024px;
+  margin: 0 auto;
 }
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   padding: 1.3rem 0rem 0.7rem;
   position: relative;
   z-index: 2;
@@ -25,6 +35,24 @@
 }
 .header__logo {
   height: 30px;
+}
+.header__arrow {
+  position: absolute;
+  left: 1.5rem;
+  font-size: 1.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+@media (min-width: 768px) {
+  .header {
+    padding: 2rem 0rem;
+  }
+  .header__logo {
+    height: 35px;
+  }
+  .header__arrow {
+    display: none;
+  }
 }
 
 .localisation {
@@ -84,6 +112,10 @@
 .button:hover::before {
   opacity: 1;
 }
+.button--menu {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
 
 .presentation {
   display: flex;
@@ -98,29 +130,21 @@
   font-size: 1.5rem;
   font-weight: 500;
 }
+@media (min-width: 768px) {
+  .presentation__title {
+    font-size: 2.5rem;
+  }
+}
 .presentation__subtitle {
   font-size: 1.1rem;
   font-weight: 200;
 }
 
-.fonctionnement {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 3rem 1.5rem;
-}
 .fonctionnement__list {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   padding: 0rem 0rem 1rem 0.3rem;
-}
-@media (min-width: 768px) {
-  .fonctionnement__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-  }
 }
 .fonctionnement__step {
   position: relative;
@@ -157,26 +181,31 @@
 .fonctionnement__icon--purple {
   color: #9356DC;
 }
+@media (min-width: 768px) {
+  .fonctionnement__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.main {
+  background-color: #f6f6f6;
+  background-color: forestgreen;
+}
 
 .restaurants {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  max-width: 1024px;
+  margin: 0 auto;
   padding: 3rem 1.5rem 4rem;
-  width: 100%;
-  background-color: #f6f6f6;
 }
 .restaurants__list {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-}
-@media (min-width: 768px) {
-  .restaurants__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 5rem;
-  }
 }
 .restaurants__link {
   color: inherit;
@@ -220,6 +249,16 @@
 .restaurants__subtitle {
   font-size: 1.1rem;
   font-weight: 200;
+}
+@media (min-width: 768px) {
+  .restaurants {
+    padding: 3rem 1.5rem 3rem;
+  }
+  .restaurants__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 5rem;
+  }
 }
 
 .heart {
@@ -272,6 +311,100 @@
     transform: scale(0);
   }
 }
+.photo-menu img {
+  position: absolute;
+  width: 100%;
+  height: 17rem;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 15rem;
+  padding: 2rem 1.5rem;
+  border-radius: 2rem 2rem 0rem 0rem;
+  background-color: #f6f6f6;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+.menu__title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu__title {
+  font-family: "Shrikhand", serif;
+  font-weight: 200;
+}
+.menu .heart-checkbox {
+  margin-right: 1rem;
+}
+.menu__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.menu__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.menu__section-title {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 200;
+}
+.menu__section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2.6rem;
+  height: 0.2rem;
+  background-color: #99E2D0;
+}
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.menu .abc {
+  display: flex;
+}
+.menu .abc i {
+  position: absolute;
+  right: 1.5rem;
+  top: center;
+  color: red;
+}
+.menu__item {
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 2px #eaeaea;
+  background-color: white;
+}
+.menu__item-title {
+  font-weight: 500;
+}
+.menu__subtitle {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 200;
+}
+
 .footer {
   display: flex;
   flex-direction: column;
@@ -290,13 +423,6 @@
   flex-direction: column;
   gap: 0.5rem;
 }
-@media (min-width: 768px) {
-  .footer__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 8rem 1fr;
-    gap: 1rem;
-  }
-}
 .footer__icon {
   padding-right: 0.5rem;
   font-size: 1rem;
@@ -312,7 +438,12 @@
   .footer {
     flex-direction: row-reverse;
     gap: 0rem;
-    padding: 4rem 4rem 2rem 0;
+    padding: 4rem 4rem 2rem 4rem;
+  }
+  .footer__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 8rem 1fr;
+    gap: 1rem;
   }
 }
 
