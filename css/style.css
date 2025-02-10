@@ -273,18 +273,38 @@ body {
   background: linear-gradient(to bottom, #9356DC, #FF79DA);
   background-clip: text;
   color: transparent;
+  transform: scale(0);
+  transition: 250ms ease-out;
 }
 
-.heart-checkbox .checkbox {
+.checkbox {
   display: none;
 }
-.heart-checkbox .checkbox:checked + .heart::after {
-  animation: heart-in 250ms forwards;
-}
-.heart-checkbox .checkbox:not(:checked) + .heart::after {
-  animation: heart-out 250ms ease-in forwards;
+.checkbox:checked + .heart-checkbox > .heart::after {
+  transform: scale(1);
 }
 
+/*.heart-wrapper {
+    position: relative;
+}
+
+.heart {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    &--full {
+        background: linear-gradient(to bottom, $primary-color, $secondary-color);
+        background-clip: text;                
+        color: transparent;
+    }
+}
+
+.checkbox {
+    display: none;
+}*/
 .photo-menu img {
   position: absolute;
   width: 100%;

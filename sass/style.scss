@@ -317,32 +317,52 @@ body {
 
     &::after {
         content: "\f004";                       
-        font-family: "Font Awesome 6 Free";     // on positionne la version remplie du coeur
-        font-weight: 900;                       // par-dessus (::after) la version regular
-        position: absolute;                     // précisément au même endroit
+        font-family: "Font Awesome 6 Free";     
+        font-weight: 900;                       
+        position: absolute;                     
         left: 0;
-
-        //visibility: hidden;
 
         background: linear-gradient(to bottom, $primary-color, $secondary-color);
         background-clip: text;                
-        color: transparent;                     // on applique le dégradé sur le coeur
+        color: transparent;     
+        
+        transform: scale(0);
+        transition: 250ms ease-out;
+    }
+}
+      
+.checkbox {        
+    display: none;
+
+    &:checked + .heart-checkbox > .heart::after {
+        transform: scale(1);
     }
 }
 
-.heart-checkbox {       
-    .checkbox {        
-        display: none;  
 
-        &:checked + .heart::after {
-            animation: heart-in 250ms forwards;
-        }
+/*.heart-wrapper {
+    position: relative;
+}
 
-        &:not(:checked) + .heart::after {
-            animation: heart-out 250ms ease-in forwards;
-        }
+.heart {
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+    &--full {
+        background: linear-gradient(to bottom, $primary-color, $secondary-color);
+        background-clip: text;                
+        color: transparent;
     }
 }
+
+.checkbox {
+    display: none;
+}*/
+
+
 
 .photo-menu img {
     position: absolute;
