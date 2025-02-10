@@ -57,21 +57,24 @@ body {
     background-color: $primary-background-color;
     box-shadow: 0px 2px 2px $dark-box-shadow;
 
-    &__logo { height: 30px; }
+    &__logo { 
+        height: 30px; }
 
     &__arrow {
         position: absolute;
+        top: 50%;
         left: 1.5rem;
-
-        font-size: 1.5rem;
+        
+        font-size: 1.1rem;
         color: inherit;
         text-decoration: none;
+
+        transform: translateY(-50%);
     }
 
     @media (min-width: 768px) {
         padding: 2rem 0rem;
         &__logo { height: 35px; }
-        &__arrow { display: none; }
     }
 }
 
@@ -319,6 +322,8 @@ body {
         position: absolute;                     // précisément au même endroit
         left: 0;
 
+        //visibility: hidden;
+
         background: linear-gradient(to bottom, $primary-color, $secondary-color);
         background-clip: text;                
         color: transparent;                     // on applique le dégradé sur le coeur
@@ -345,6 +350,10 @@ body {
     height: 17rem;
     object-fit: cover;
     z-index: -1;
+
+    @media (min-width: 768px) {
+        height: 27rem;
+    }
 }
 
 .main-menu {
@@ -358,6 +367,12 @@ body {
 
     border-radius: 2rem 2rem 0rem 0rem;
     background-color: $secondary-background-color;
+
+    @media (min-width: 768px) {
+        max-width: 1024px;
+        margin: 0 auto;
+        margin-top: 25rem;
+    }
 }
 
 .menu {
@@ -369,6 +384,10 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media (min-width: 768px) {
+            justify-content: center;
+        }
     }    
 
     &__title {
@@ -377,12 +396,22 @@ body {
     }
 
     & .heart-checkbox {
+        margin-left: 2rem;
         margin-right: 1rem;
+
+        @media (min-width: 768px) {
+            margin-right: 0rem;
+        }
     }
 
     &__content {
         @include flexColumn();
-        gap: 2rem; 
+        gap: 2rem;
+
+        @media (min-width: 768px) {
+            width: 650px;
+            margin: 0 auto;
+        }
     }
 
     &__section { 
@@ -390,7 +419,7 @@ body {
         gap: 1rem;
         &--entrees {
             .menu__section-title {
-                animation: title-reveal 400ms;
+                animation: title-reveal 350ms;
             }
             .menu__list {
                 animation: menu-reveal 400ms 200ms backwards ease-in-out;
@@ -398,7 +427,7 @@ body {
         }
         &--plats {
             .menu__section-title {
-                animation: title-reveal 400ms 200ms backwards;
+                animation: title-reveal 350ms 200ms backwards;
             }
             .menu__list {
                 animation: menu-reveal 400ms 400ms backwards ease-in-out;
@@ -406,7 +435,7 @@ body {
         }
         &--desserts {
             .menu__section-title {
-                animation: title-reveal 400ms 400ms backwards;
+                animation: title-reveal 350ms 400ms backwards;
             }
             .menu__list {
                 animation: menu-reveal 400ms 600ms backwards ease-in-out;
@@ -443,7 +472,7 @@ body {
         overflow: hidden;
 
         border-radius: 1rem;
-        box-shadow: 0px 2px 2px $light-box-shadow;
+        box-shadow: 0px 2px 2px $light-box-shadow; 
     }
 
     .checkbox-label {
@@ -467,7 +496,7 @@ body {
         background-color: $tertiary-color;
 
         transform: translate(5rem, -50%);
-        transition: 300ms ease-out;
+        transition: 200ms ease-out;
     }
 
     .checkbox {
@@ -477,8 +506,11 @@ body {
             transform: translate(0rem, -50%);
         }
 
-        &:checked ~ .menu__item .menu__subtitle .menu__subtitle-price,
         &:checked ~ .menu__item .menu__item-title {
+            padding-right: 7rem;
+        }
+
+        &:checked ~ .menu__item .menu__subtitle .menu__subtitle-price {
             padding-right: 5rem;
         }
     }
@@ -493,14 +525,14 @@ body {
     }
 
     &__item-title {
-        padding-right: 0rem;
+        padding-right: 3rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
 
         font-weight: $bold-font-weight;
     
-        transition: 300ms ease-out;
+        transition: 200ms ease-out;
     }
 
     &__subtitle {
@@ -520,7 +552,7 @@ body {
     &__subtitle-price {
         font-weight: $bold-font-weight;
 
-        transition: 300ms ease-out;
+        transition: 200ms ease-out;
     }
 }
 
@@ -594,7 +626,7 @@ body {
 
 @keyframes title-reveal {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(-9999px);
     }
     100% {
         transform: translateX(0%);

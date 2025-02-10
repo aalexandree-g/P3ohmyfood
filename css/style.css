@@ -38,10 +38,12 @@ body {
 }
 .header__arrow {
   position: absolute;
+  top: 50%;
   left: 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: inherit;
   text-decoration: none;
+  transform: translateY(-50%);
 }
 @media (min-width: 768px) {
   .header {
@@ -49,9 +51,6 @@ body {
   }
   .header__logo {
     height: 35px;
-  }
-  .header__arrow {
-    display: none;
   }
 }
 
@@ -293,6 +292,11 @@ body {
   object-fit: cover;
   z-index: -1;
 }
+@media (min-width: 768px) {
+  .photo-menu img {
+    height: 27rem;
+  }
+}
 
 .main-menu {
   display: flex;
@@ -303,6 +307,13 @@ body {
   padding: 2rem 1.5rem;
   border-radius: 2rem 2rem 0rem 0rem;
   background-color: #f6f6f6;
+}
+@media (min-width: 768px) {
+  .main-menu {
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 25rem;
+  }
 }
 
 .menu {
@@ -316,17 +327,34 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+@media (min-width: 768px) {
+  .menu__title-container {
+    justify-content: center;
+  }
+}
 .menu__title {
   font-family: "Shrikhand", serif;
   font-weight: 200;
 }
 .menu .heart-checkbox {
+  margin-left: 2rem;
   margin-right: 1rem;
+}
+@media (min-width: 768px) {
+  .menu .heart-checkbox {
+    margin-right: 0rem;
+  }
 }
 .menu__content {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+@media (min-width: 768px) {
+  .menu__content {
+    width: 650px;
+    margin: 0 auto;
+  }
 }
 .menu__section {
   display: flex;
@@ -334,19 +362,19 @@ body {
   gap: 1rem;
 }
 .menu__section--entrees .menu__section-title {
-  animation: title-reveal 400ms;
+  animation: title-reveal 350ms;
 }
 .menu__section--entrees .menu__list {
   animation: menu-reveal 400ms 200ms backwards ease-in-out;
 }
 .menu__section--plats .menu__section-title {
-  animation: title-reveal 400ms 200ms backwards;
+  animation: title-reveal 350ms 200ms backwards;
 }
 .menu__section--plats .menu__list {
   animation: menu-reveal 400ms 400ms backwards ease-in-out;
 }
 .menu__section--desserts .menu__section-title {
-  animation: title-reveal 400ms 400ms backwards;
+  animation: title-reveal 350ms 400ms backwards;
 }
 .menu__section--desserts .menu__list {
   animation: menu-reveal 400ms 600ms backwards ease-in-out;
@@ -395,7 +423,7 @@ body {
   color: white;
   background-color: #99E2D0;
   transform: translate(5rem, -50%);
-  transition: 300ms ease-out;
+  transition: 200ms ease-out;
 }
 .menu .checkbox {
   display: none;
@@ -403,7 +431,10 @@ body {
 .menu .checkbox:checked + .choice {
   transform: translate(0rem, -50%);
 }
-.menu .checkbox:checked ~ .menu__item .menu__subtitle .menu__subtitle-price, .menu .checkbox:checked ~ .menu__item .menu__item-title {
+.menu .checkbox:checked ~ .menu__item .menu__item-title {
+  padding-right: 7rem;
+}
+.menu .checkbox:checked ~ .menu__item .menu__subtitle .menu__subtitle-price {
   padding-right: 5rem;
 }
 .menu__item {
@@ -415,12 +446,12 @@ body {
   background-color: white;
 }
 .menu__item-title {
-  padding-right: 0rem;
+  padding-right: 3rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: 500;
-  transition: 300ms ease-out;
+  transition: 200ms ease-out;
 }
 .menu__subtitle {
   display: flex;
@@ -436,7 +467,7 @@ body {
 }
 .menu__subtitle-price {
   font-weight: 500;
-  transition: 300ms ease-out;
+  transition: 200ms ease-out;
 }
 
 .footer {
@@ -504,7 +535,7 @@ body {
 }
 @keyframes title-reveal {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-9999px);
   }
   100% {
     transform: translateX(0%);
