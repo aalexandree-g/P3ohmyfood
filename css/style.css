@@ -263,20 +263,17 @@ body {
 .heart {
   font-size: 1.5rem;
   position: relative;
+  cursor: pointer;
 }
 .heart::after {
   content: "\f004";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   position: absolute;
-  top: 0;
-  bottom: 0;
   left: 0;
-  right: 0;
   background: linear-gradient(to bottom, #9356DC, #FF79DA);
   background-clip: text;
   color: transparent;
-  transform: scale(0);
 }
 
 .heart-checkbox .checkbox {
@@ -286,30 +283,9 @@ body {
   animation: heart-in 250ms forwards;
 }
 .heart-checkbox .checkbox:not(:checked) + .heart::after {
-  animation: heart-out 250ms ease-in;
+  animation: heart-out 250ms ease-in forwards;
 }
 
-@keyframes heart-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.2);
-    animation-timing-function: ease-in;
-  }
-  100% {
-    transform: scale(1);
-    animation-timing-function: ease-out;
-  }
-}
-@keyframes heart-out {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
 .photo-menu img {
   position: absolute;
   width: 100%;
@@ -357,6 +333,24 @@ body {
   flex-direction: column;
   gap: 1rem;
 }
+.menu__section--entrees .menu__section-title {
+  animation: title-reveal 400ms;
+}
+.menu__section--entrees .menu__list {
+  animation: menu-reveal 400ms 200ms backwards ease-in-out;
+}
+.menu__section--plats .menu__section-title {
+  animation: title-reveal 400ms 200ms backwards;
+}
+.menu__section--plats .menu__list {
+  animation: menu-reveal 400ms 400ms backwards ease-in-out;
+}
+.menu__section--desserts .menu__section-title {
+  animation: title-reveal 400ms 400ms backwards;
+}
+.menu__section--desserts .menu__list {
+  animation: menu-reveal 400ms 600ms backwards ease-in-out;
+}
 .menu__section-title {
   display: inline-block;
   position: relative;
@@ -378,11 +372,11 @@ body {
   flex-direction: column;
   gap: 0.7rem;
 }
-.menu .bandeau {
+.menu .bandeau-item {
   position: relative;
+  overflow: hidden;
   border-radius: 1rem;
   box-shadow: 0px 2px 2px #eaeaea;
-  overflow: hidden;
 }
 .menu .checkbox-label {
   position: absolute;
@@ -401,7 +395,7 @@ body {
   color: white;
   background-color: #99E2D0;
   transform: translate(5rem, -50%);
-  transition: transform 300ms ease-out;
+  transition: 300ms ease-out;
 }
 .menu .checkbox {
   display: none;
@@ -409,8 +403,8 @@ body {
 .menu .checkbox:checked + .choice {
   transform: translate(0rem, -50%);
 }
-.menu .checkbox:checked ~ .menu__item .menu__subtitle .menu__subtitle-price {
-  transform: translateX(-5rem);
+.menu .checkbox:checked ~ .menu__item .menu__subtitle .menu__subtitle-price, .menu .checkbox:checked ~ .menu__item .menu__item-title {
+  padding-right: 5rem;
 }
 .menu__item {
   display: flex;
@@ -418,20 +412,31 @@ body {
   gap: 0.3rem;
   width: 100%;
   padding: 1rem;
-  border-radius: 1rem;
   background-color: white;
 }
 .menu__item-title {
+  padding-right: 0rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: 500;
+  transition: 300ms ease-out;
 }
 .menu__subtitle {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  padding-right: 0rem;
   font-weight: 200;
 }
+.menu__subtitle-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .menu__subtitle-price {
-  transform: translate(0);
-  transition: transform 300ms ease-out;
+  font-weight: 500;
+  transition: 300ms ease-out;
 }
 
 .footer {
@@ -473,6 +478,46 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 8rem 1fr;
     gap: 1rem;
+  }
+}
+
+@keyframes heart-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes heart-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes title-reveal {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes menu-reveal {
+  0% {
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+  100% {
+    transform-origin: top;
+    transform: scaleY(1);
   }
 }
 
