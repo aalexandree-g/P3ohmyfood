@@ -58,7 +58,7 @@ body { min-width: 320px; }
         border: solid 0.3rem $primary-color;
         background-color: $secondary-color;
 
-        animation: loading 1700ms infinite;
+        animation: loading 1600ms infinite;
     }
 }
 
@@ -72,13 +72,13 @@ body { min-width: 320px; }
 
 @keyframes loading {
     0% {
-        transform: scale(1.5, 0.5);
+        transform: scale(1.4, 0.6);
         animation-timing-function: cubic-bezier(.3,-0.06,0,1.24);
 
         border-radius: 2rem;
     }
     50% {
-        transform: scale(0.6, 1.5) rotate(360deg);
+        transform: scale(0.6, 1.4) rotate(360deg);
         animation-timing-function: cubic-bezier(1,-0.24,.23,1);
 
         background-color: $tertiary-color;
@@ -86,8 +86,8 @@ body { min-width: 320px; }
         border-radius: 0rem;
     }
     100% {
-        transform: scale(1.5, 0.5) rotate(720deg);
-        animation-timing-function: ease-in;
+        transform: scale(1.4, 0.6) rotate(720deg);
+        animation-timing-function: ease-in-out;
 
         border-radius: 2rem;
     }
@@ -373,7 +373,6 @@ body { min-width: 320px; }
     position: relative;
     cursor: pointer;
 
-
     /***** ANIMATION DU COEUR *****/
     &::after {                                  
         content: "\f004";                       
@@ -531,7 +530,6 @@ body { min-width: 320px; }
         padding: 3rem 1.7rem;
 
         color: white;
-
         background-color: $tertiary-color;
 
         transform: translate(5rem, -50%);
@@ -542,12 +540,12 @@ body { min-width: 320px; }
         display: none;
 
         /***** ANIMATION DE LA PETITE COCHE VERTE *****/
-        &:checked + .choice { transform: translate(0rem, -50%); }
+        &:checked + .checkbox-label > .choice { transform: translate(0rem, -50%); }
 
         /***** DÉCALAGE DU TITRE DES PLATS *****/
         &:checked ~ .menu__item .menu__item-title { padding-right: 7rem; }
 
-        /***** D´CALAGE DU PRIX DES PLATS *****/
+        /***** DÉCALAGE DU PRIX DES PLATS *****/
         &:checked ~ .menu__item .menu__subtitle .menu__subtitle-price { padding-right: 5rem; }
     }
 
@@ -576,6 +574,7 @@ body { min-width: 320px; }
         justify-content: space-between;
         gap: 1rem;
         padding-right: 0rem;
+        
         font-weight: $light-font-weight;
     }
 

@@ -34,7 +34,7 @@ body {
   z-index: 9999;
   border: solid 0.3rem #9356DC;
   background-color: #FF79DA;
-  animation: loading 1700ms infinite;
+  animation: loading 1600ms infinite;
 }
 
 .loader-background {
@@ -54,20 +54,20 @@ body {
 }
 @keyframes loading {
   0% {
-    transform: scale(1.5, 0.5);
+    transform: scale(1.4, 0.6);
     animation-timing-function: cubic-bezier(0.3, -0.06, 0, 1.24);
     border-radius: 2rem;
   }
   50% {
-    transform: scale(0.6, 1.5) rotate(360deg);
+    transform: scale(0.6, 1.4) rotate(360deg);
     animation-timing-function: cubic-bezier(1, -0.24, 0.23, 1);
     background-color: #99E2D0;
     border: solid 0.3rem #353535;
     border-radius: 0rem;
   }
   100% {
-    transform: scale(1.5, 0.5) rotate(720deg);
-    animation-timing-function: ease-in;
+    transform: scale(1.4, 0.6) rotate(720deg);
+    animation-timing-function: ease-in-out;
     border-radius: 2rem;
   }
 }
@@ -501,9 +501,9 @@ body {
   display: none;
   /***** ANIMATION DE LA PETITE COCHE VERTE *****/
   /***** DÉCALAGE DU TITRE DES PLATS *****/
-  /***** D´CALAGE DU PRIX DES PLATS *****/
+  /***** DÉCALAGE DU PRIX DES PLATS *****/
 }
-.menu .checkbox:checked + .choice {
+.menu .checkbox:checked + .checkbox-label > .choice {
   transform: translate(0rem, -50%);
 }
 .menu .checkbox:checked ~ .menu__item .menu__item-title {
